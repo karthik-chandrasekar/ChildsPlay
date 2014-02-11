@@ -11,9 +11,9 @@ class PairCountMapper:
         for line in sys.stdin:
             if not line:continue
             words = line.strip().split(',')
+            #print words
             for pair in itertools.combinations(words[1:], 2):
-                print "%s\t%s" % (self.delimiter.join([pair[0].strip(), pair[1].strip()]), 1)
-            
+                print "%s\t%s" % (",".join(pair), 1)
 
 if __name__ == "__main__":
     pcm_obj = PairCountMapper() 
