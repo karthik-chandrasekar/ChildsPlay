@@ -1,29 +1,32 @@
+#!/usr/bin/python
+#coding=utf-8
+
 import sys
 
 class PairCountReducer:
     def __init__(self):
-        self.current_pair = None
-        self.current_count = 0
+        pass
 
     def run_main(self):
+        current_pair = None
+        current_count = 0
         for line in sys.stdin:
             try:
                 if not line:continue
                 pair, count = line.strip().split("\t")
                 count = int(count)
-                if pair == self.current_pair:
-                    self.current_count += count
+                if pair == current_pair:
+                    current_count += count
                 else:
-                    if self.current_pair:
-                        print "%s\t%s" % (self.current_pair, self.current_count)
-                    self.current_pair = pair
-                    self.current_count = count
-
+                    if current_pair:
+                        print "%s\t%s" % (current_pair, current_count)
+                    current_pair = pair
+                    current_count = count
             except:
                 continue
 
-        if self.current_pair:
-            print "%s\t%s" % (self.current_pair, self.current_count)
+        if current_pair:
+            print "%s\t%s" % (current_pair, current_count)
             
 if __name__ == "__main__":
     pcr_obj = PairCountReducer()
