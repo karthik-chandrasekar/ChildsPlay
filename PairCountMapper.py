@@ -15,6 +15,7 @@ class PairCountMapper:
             try:
                 line = line and line.strip()
                 if not line:continue
+             
                 for pair in itertools.combinations(line.split(','), 2):
                     print "%s\t%s" % (delimiter.join(pair), 1)
             except:
