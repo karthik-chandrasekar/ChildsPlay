@@ -10,12 +10,15 @@ class WordCountReducer:
     def run_main(self):
         current_pair = None
         current_count = 0
+
         for line in sys.stdin:
             try:
                 line = line and line.strip()
                 if not line:continue
+            
                 pair, count = line.split("\t")
                 count = int(count)
+            
                 if pair == current_pair:
                     current_count += count
                 else:
