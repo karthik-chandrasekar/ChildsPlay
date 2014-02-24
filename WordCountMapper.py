@@ -10,13 +10,12 @@ class WordCountMapper:
     def run_main(self):
         for line in sys.stdin:
             try:
+                line = line and line.strip()
                 if not line:continue
-                words = line.strip().split(',')
-                words = [word.strip() for word in words if word and word.strip()]
-                for word in words:
+                for word in line.split(','):
                     print "%s\t%s" % (word, 1)
             except:
-                continue
+                print "Exception in WordCountMapper"
 
 if __name__ == "__main__":
     wcm_obj = WordCountMapper() 

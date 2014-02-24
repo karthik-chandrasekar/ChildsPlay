@@ -4,19 +4,21 @@
 import itertools,sys
 
 class PairCountMapper:
+    
     def __init__(self):
-        self.delimiter = "##$##"
+        pass
 
     def run_main(self):
+        
+        delimiter = "##$##"
         for line in sys.stdin:
             try:
+                line = line and line.strip()
                 if not line:continue
-                words = line.strip().split(',')
-                words = [word.strip() for word in words if word and word.strip()]
-                for pair in itertools.combinations(words[1:], 2):
-                    print "%s\t%s" % (self.delimiter.join(pair), 1)
+                for pair in itertools.combinations(line.split(','), 2):
+                    print "%s\t%s" % (delimiter.join(pair), 1)
             except:
-                continue
+                print "Exception in PairCountMapper"
 
 if __name__ == "__main__":
     pcm_obj = PairCountMapper() 
